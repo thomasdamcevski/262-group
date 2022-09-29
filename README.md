@@ -13,6 +13,8 @@ Clone the repository:
 Run using docker
 `docker-compose up`
 
+Wait for setup to complete
+
 Navigate to
 `localhost:8000`
 on your web browser
