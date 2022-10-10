@@ -42,22 +42,28 @@
     if (!$conn->query($sql)) {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-    
-    /* Displaying all the values in the table
-    $query = "SELECT * FROM People";
-    $result = $conn->query($query);
-    while($row = $result->fetch_array()) {
-        echo $row['firstname'] . " " . $row['lastname'];
-        echo "<br />";
-    } */
 
-    // Query the database for the given user
-    $query_name = $_POST["name"];
-    $result = $conn->query("SELECT * FROM People WHERE firstname='$query_name'");
-    while ($row = $result->fetch_array()) {
-        echo '<pre>'; print_r($row); echo '</pre>';
-        echo "<br />";
+    // Querying databse for username and password to authenticate user
+    // We can perform simple SQL injection here
+    $query = $conn->query("SELECT * FROM People WHERE firstname = '$_POST[name]' AND pswd = '$_POST[password]'");
+    $num = mysqli_num_rows($query);
+
+    if ($num > 0) {
+        echo "Logged in successfully";
+        // Query the database for the given user
+        $query_name = $_POST["name"];
+
+        $result = $conn->query("SELECT * FROM People WHERE firstname='$query_name'");
+
+        // Just printing an array of the results at the moment, this should be changed to a table or something
+        while ($row = $result->fetch_array()) {
+            echo '<pre>'; print_r($row); echo '</pre>';
+            echo "<br />";
+        }
+    } else {
+        echo "Username or password incorrect";
     }
+
     
     // Drop table
     $sql = "DROP TABLE People";
