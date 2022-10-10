@@ -21,10 +21,11 @@ on your web browser
 
 The database currently consists of:
 
-| John  | Doe    | password    |
+| fname | lname  | password    |
 |-------|--------|-------------|
 | Mary  | Moe    | 123456      |
 | Julie | Dooley | password123 |
+| John  | Doe    | password    |
 
 You can login as any of the users. To perform a simple SQL injection, instead of inputting the password input this:
 ` ' or '1'='1`
