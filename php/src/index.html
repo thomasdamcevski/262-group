@@ -9,11 +9,27 @@
         <link rel="stylesheet" href="main.css" />
     </head>
     <body>
-        <form action="query.php" method="post">
-            Name: <input type="text" name="name" /><br />
-            Password: <input type="text" name="password" /><br />
-            <input type="submit" />
-        </form>
+        <img src="mountains.png" class="background_image" />
+
+        <div class="center_box">
+		    <img src="logo.png" class="logo indent" align="top" width="600" />
+		    <br /><br />
+
+            <form action="query.php" class="login indent" method="post">
+                <table border="0px">
+                    <tr>
+                        <td>Name:</td>
+                        <td><input type="text" name="name" /></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="text" name="password" /></td>
+                    </tr>
+                </table>
+                <br />
+                <input id="submit" type="submit" text="Login" />
+            </form>
+        </div>
     </body>
     <script src="assets/main.js"></script>
 </html>
