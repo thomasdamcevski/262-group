@@ -1,3 +1,55 @@
 h1 {
     color: red;
 }
+
+.logo {
+    filter: brightness(0.5) sepia(1) hue-rotate(190deg) saturate(10);
+    margin-top: 20px;
+}
+
+.indent {
+    margin-left: 5%;
+}
+
+.login {
+    margin-top: 40px;
+}
+
+.background_image {
+    height: 100%;
+    width: 100%;
+
+    position: fixed;
+    top: 0%;
+    left: 0%;
+}
+
+.center_box {
+    height: 50%;
+    width: 50%;
+    background: white;
+
+    position: fixed;
+    top: 25%;
+    left: 25%;
+
+    border-radius: 50px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#submit {
+    border-radius: 10px;
+    outline-width: 1px;
+    outline-color: darkslategray;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightsteelblue;
+}
+#submit:hover {
+    background-color: darkturquoise;
+    box-shadow: 0px 0px 1px #777;
+   }
