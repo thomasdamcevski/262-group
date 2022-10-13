@@ -44,33 +44,21 @@
     }
 
     // Querying databse for username and password to authenticate user
-    // Here we are protected from SQL injections
-    $firstname = $_POST["name"];
-    $pswd = $_POST["password"];
-
-
-    // Preparing the statements 
-    $stmt = $conn->prepare("SELECT * FROM People WHERE firstname = ? AND pswd = ?");
-    $stmt->bind_param("ss", $firstname, $pswd);
-    
-    // Executing the statement that was prepared 
-    $stmt->execute(); 
-    $result = $stmt->get_result();
-    
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_store_result($stmt);
-
-    $num = mysqli_stmt_num_rows($stmt);
+    // We can perform simple SQL injection here
+    $query = $conn->query("SELECT * FROM People WHERE firstname = '$_POST[name]' AND pswd = '$_POST[password]'");
+    $num = mysqli_num_rows($query);
 
     if ($num > 0) {
         echo "Logged in successfully";
         // Query the database for the given user
         $query_name = $_POST["name"];
 
+        $result = $conn->query("SELECT * FROM People WHERE firstname='$query_name'");
+
         // Just printing an array of the results at the moment, this should be changed to a table or something
         while ($row = $result->fetch_array()) {
-            echo '<pre>'; print_r($row); echo '</pre>';
-            echo "<br />";
+            echo "Name: " . $row["firstname"] . " " . $row["lastname"] . "<br>";
+            echo "Password: " . $row["pswd"] . "<br>";
         }
     } else {
         echo "Username or password incorrect";
