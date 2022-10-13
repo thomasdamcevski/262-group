@@ -63,7 +63,7 @@
     $num = mysqli_stmt_num_rows($stmt);
 
     if ($num > 0) {
-        echo "Logged in successfully";
+        echo "Logged in successfully<br>";
         // Query the database for the given user
         $query_name = $_POST["name"];
 
