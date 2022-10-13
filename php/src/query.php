@@ -69,8 +69,8 @@
 
         // Just printing an array of the results at the moment, this should be changed to a table or something
         while ($row = $result->fetch_array()) {
-            echo '<pre>'; print_r($row); echo '</pre>';
-            echo "<br />";
+            echo "Name: " . $row["firstname"] . " " . $row["lastname"] . "<br>";
+            echo "Password: " . $row["pswd"] . "<br>";
         }
     } else {
         echo "Username or password incorrect";
